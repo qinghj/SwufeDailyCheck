@@ -1,0 +1,33 @@
+name: action
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: 30 0 * * *
+  watch:
+    types: [started]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+        env:
+          ___NAME: ${{ secrets.NAME }}
+          ___PWD: ${{ secrets.PWD }}
+      - name: Setup Chrome
+        # You may pin to the exact commit or the version.
+        # uses: browser-actions/setup-chrome@4fa655aad48f56911cad16db9252399a9e592848
+        uses: browser-actions/setup-chrome@v0.0.0
+        
+      - run: which chrome
+      - name: setup-chromedriver
+        # You may pin to the exact commit or the version.
+        # uses: nanasess/setup-chromedriver@da249190822b1cd9bd78038fbadf65fa9b9f9c24
+        uses: nanasess/setup-chromedriver@v1.0.8
+      - run: which chromedriver
+      - run: python Swufe_DailyCheck.py

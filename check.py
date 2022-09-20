@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 import time
+import os
 
 option = ChromeOptions()
 option.add_experimental_option('excludeSwitches',['enable-automation'])
@@ -9,8 +10,8 @@ driver = webdriver.Chrome(options=option)
 driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument",
     {'source':'Object.defineProperty(navigator,"webdriver",{get:(=>undefine}'})
 
-name = ""
-password = ""
+name = os.environ['___NAME']
+password = os.environ['___PWD']
 
 driver.get("http://swufeapp.iswufe.info/jinzhi/index.php")
 
@@ -22,3 +23,6 @@ time.sleep(1)
 driver.find_element_by_xpath('//*[@id="yirisanbao"]/div[13]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="yirisanbao"]/button').click()
+time.sleep(1)
+
+driver.close()
