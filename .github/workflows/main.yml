@@ -30,4 +30,4 @@ jobs:
         # uses: nanasess/setup-chromedriver@da249190822b1cd9bd78038fbadf65fa9b9f9c24
         uses: nanasess/setup-chromedriver@v1.0.8
       - run: which chromedriver
-      - run: python Swufe_DailyCheck.py
+      - run: python check.py
