@@ -1,0 +1,24 @@
+from selenium import webdriver
+from selenium.webdriver import ChromeOptions
+import time
+
+option = ChromeOptions()
+option.add_experimental_option('excludeSwitches',['enable-automation'])
+option.add_experimental_option('useAutomationExtension',False)
+driver = webdriver.Chrome(options=option)
+driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument",
+    {'source':'Object.defineProperty(navigator,"webdriver",{get:(=>undefine}'})
+
+name = ""
+password = ""
+
+driver.get("http://swufeapp.iswufe.info/jinzhi/index.php")
+
+driver.find_element_by_xpath('//*[@id="username"]').send_keys(name)
+driver.find_element_by_xpath('//*[@id="password"]').send_keys(password)
+driver.find_element_by_xpath('//*[@id="casLoginForm"]/p[4]/button').click()
+driver.find_element_by_xpath('//*[@id="middle-grid"]/div[1]/div').click()
+time.sleep(1)
+driver.find_element_by_xpath('//*[@id="yirisanbao"]/div[13]').click()
+time.sleep(1)
+driver.find_element_by_xpath('//*[@id="yirisanbao"]/button').click()
