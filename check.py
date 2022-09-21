@@ -11,7 +11,7 @@ option.add_experimental_option('excludeSwitches',['enable-automation'])
 option.add_experimental_option('useAutomationExtension',False)
 driver = webdriver.Chrome(options=option)
 driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument",
-    {'source':'Object.defineProperty(navigator,"webdriver",{get:(=>undefine}'})
+    {'source':'Object.defineProperty(navigator,"webdriver",{get:()=>undefine}'})
 
 name = os.environ['___NAME']
 password = os.environ['___PWD']
@@ -24,7 +24,7 @@ driver.find_element("xpath",'//*[@id="casLoginForm"]/p[4]/button').click()
 driver.find_element("xpath",'//*[@id="middle-grid"]/div[1]/div').click()
 time.sleep(1)
 driver.find_element("xpath",'//*[@id="yirisanbao"]/div[13]').click()
-time.sleep(1)
+time.sleep(2)
 driver.find_element("xpath",'//*[@id="yirisanbao"]/button').click()
 time.sleep(1)
 
