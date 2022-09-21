@@ -18,14 +18,14 @@ password = os.environ['___PWD']
 
 driver.get("http://swufeapp.iswufe.info/jinzhi/index.php")
 
-driver.find_element_by_xpath('//*[@id="username"]').send_keys(name)
-driver.find_element_by_xpath('//*[@id="password"]').send_keys(password)
-driver.find_element_by_xpath('//*[@id="casLoginForm"]/p[4]/button').click()
-driver.find_element_by_xpath('//*[@id="middle-grid"]/div[1]/div').click()
+driver.find_element("xpath",'//*[@id="username"]').send_keys(name)
+driver.find_element("xpath",'//*[@id="password"]').send_keys(password)
+driver.find_element("xpath",'//*[@id="casLoginForm"]/p[4]/button').click()
+driver.find_element("xpath",'//*[@id="middle-grid"]/div[1]/div').click()
 time.sleep(1)
-driver.find_element_by_xpath('//*[@id="yirisanbao"]/div[13]').click()
+driver.find_element("xpath",'//*[@id="yirisanbao"]/div[13]').click()
 time.sleep(1)
-driver.find_element_by_xpath('//*[@id="yirisanbao"]/button').click()
+driver.find_element("xpath",'//*[@id="yirisanbao"]/button').click()
 time.sleep(1)
 
 driver.close()
